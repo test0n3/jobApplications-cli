@@ -23,7 +23,7 @@ The CSV format is as follow:
 ## Progress
 - [x] read file system and generate CSV file sorted by date
 - [x] generate unique pdf file with all the images in sorted by data
-- [ ] generated pdf has the images in order
+- [x] generated pdf has the images in order
 
 ## Requirements(linux)
 - Ruby, currently running version 2.7.3
