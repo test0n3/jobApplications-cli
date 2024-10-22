@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'csv'
-require 'shellwords'
+# require 'shellwords'
 
 directory_path = ARGV[0]
 directory_path = directory_path.match?(%r{/$}) ? directory_path : "#{directory_path}/"
@@ -21,7 +21,6 @@ Dir.entries(directory_path).each do |entry|
 end
 
 files = files.sort_by { |file| file[:date] }
-# puts files
 
 csv_file = File.join(directory_path, "postulaciones_#{application_month}.csv")
 CSV.open(csv_file, 'w', headers: ['Fecha de postulación', 'Cargo', 'Empresa', 'Plataforma', 'Estado de proceso'],
@@ -33,9 +32,12 @@ end
 
 puts 'CSV file created:', csv_file
 
-files_to_process = files.map { |file| directory_path + Shellwords.escape(file[:original_name]) }.join(' ')
+# files_to_process = files.map { |file| directory_path + Shellwords.escape(file[:original_name]) }.join(' ')
+files_to_process = files.map { |file| directory_path + file[:original_name] }
 # puts files_to_process
 
 # create file
-pdf_images = system("img2pdf #{files_to_process} -o #{directory_path}postulaciones_#{application_month}.pdf")
+# pdf_images = system("img2pdf #{files_to_process} -o #{directory_path}postulaciones_#{application_month}.pdf")
+pdf_images = system('img2pdf', *files_to_process, '-o',
+                    "#{directory_path}postulaciones_#{application_month}.pdf")
 puts "PDF created: #{pdf_images}"
