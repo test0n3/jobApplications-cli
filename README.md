@@ -24,6 +24,7 @@ The CSV format is as follow:
 - [x] read file system and generate CSV file sorted by date
 - [x] generate unique pdf file with all the images in sorted by data
 - [x] generated pdf has the images in order
+- [ ] clean code, with help from [Ruby channel in Discord](https://discord.com/invite/6agKfnAY)
 
 ## Requirements(linux)
 - Ruby, currently running version 2.7.3
